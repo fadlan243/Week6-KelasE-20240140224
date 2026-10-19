@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 6 - Fetch API & Form DOM</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Fetch API & Event Handling</h1>
+    <p>Fadlan Nasrizal Parma &middot; 20240140224 &middot; Kelas E</p>
+    <nav>
+      <a href="#produk">Daftar produk</a>
+      <a href="#form">Form kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Bagian 1: Fetch API -->
+    <section id="produk" class="panel">
+      <h2>Daftar produk</h2>
+      <p class="hint">Data diambil dari <code>https://dummyjson.com/products</code></p>
+
+      <div class="toolbar">
+        <label for="cari-produk">Cari produk</label>
+        <input type="search" id="cari-produk" placeholder="Ketik nama produk" disabled>
+      </div>
+
+      <p id="status-produk" class="status" role="status" aria-live="polite"></p>
+      <button type="button" id="btn-coba-lagi" class="btn btn-ghost" hidden>Muat ulang</button>
+      <ul id="daftar-produk" class="product-grid"></ul>
+    </section>
+
+    <!-- Bagian 2: Form DOM & Event Handling -->
+    <section id="form" class="panel">
+      <h2>Form kontak</h2>
+      <p class="hint">Isi form, lalu kirim. Validasi berjalan saat mengetik dan saat dikirim.</p>
+
+      <div class="form-layout">
+        <form id="form-kontak" novalidate>
+          <div class="field">
+            <label for="nama">Nama lengkap</label>
+            <input type="text" id="nama" name="nama" autocomplete="name">
+            <p class="error" id="err-nama"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+            <p class="error" id="err-email"></p>
+          </div>
+
+          <div class="field">
+            <label for="hp">Nomor HP</label>
+            <input type="tel" id="hp" name="hp" placeholder="08xxxxxxxxxx" autocomplete="tel">
+            <p class="error" id="err-hp"></p>
+          </div>
+
+          <div class="field">
+            <label for="topik">Topik</label>
+            <select id="topik" name="topik">
+              <option value="">Pilih topik</option>
+              <option value="Pertanyaan">Pertanyaan</option>
+              <option value="Saran">Saran</option>
+              <option value="Kerja sama">Kerja sama</option>
+            </select>
+            <p class="error" id="err-topik"></p>
+          </div>
+
+          <div class="field">
+            <label for="pesan">Pesan</label>
+            <textarea id="pesan" name="pesan" rows="4" maxlength="200"></textarea>
+            <p class="counter"><span id="hitung-pesan">0</span>/200 karakter</p>
+            <p class="error" id="err-pesan"></p>
+          </div>
+
+          <div class="field field-check">
+            <input type="checkbox" id="setuju" name="setuju">
+            <label for="setuju">Data yang saya isi sudah benar</label>
+            <p class="error" id="err-setuju"></p>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn">Kirim pesan</button>
+            <button type="reset" class="btn btn-ghost" id="btn-reset">Kosongkan</button>
+          </div>
+        </form>
+
+        <aside class="result" aria-live="polite">
+          <h3>Pesan terkirim</h3>
+          <p id="hasil-kosong" class="hint">Belum ada pesan. Hasil form muncul di sini.</p>
+          <ol id="hasil-daftar"></ol>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">Tugas Praktikum PAW Week 6 &middot; UMY</footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/form.js"></script>
+</body>
+</html>

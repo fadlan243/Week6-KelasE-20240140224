@@ -1,0 +1,132 @@
+:root {
+  --bg: #eef2f5;
+  --surface: #ffffff;
+  --ink: #14202b;
+  --muted: #5a6a78;
+  --line: #d3dce4;
+  --accent: #0f6e8c;
+  --accent-dark: #0b566e;
+  --danger: #b3261e;
+  --ok: #1b7f4b;
+  --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+code { background: #e2e9ef; padding: 1px 6px; border-radius: 4px; font-size: .9em; }
+
+.site-header {
+  background: var(--ink);
+  color: #fff;
+  padding: 32px 20px 24px;
+  text-align: center;
+}
+.site-header h1 { font-size: 1.7rem; font-weight: 700; }
+.site-header p { color: #b8c6d2; margin-top: 4px; }
+.site-header nav { margin-top: 16px; display: flex; gap: 20px; justify-content: center; }
+.site-header a { color: #fff; text-underline-offset: 4px; }
+
+main { max-width: 1000px; margin: 0 auto; padding: 24px 16px 40px; display: grid; gap: 24px; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.panel h2 { font-size: 1.3rem; }
+.hint { color: var(--muted); font-size: .92rem; margin: 4px 0 16px; }
+
+/* Produk */
+.toolbar { display: grid; gap: 6px; max-width: 360px; margin-bottom: 12px; }
+.status { min-height: 1.5em; color: var(--muted); }
+.status.is-error { color: var(--danger); font-weight: 600; }
+
+.product-grid {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  margin-top: 8px;
+}
+.product-item {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+.product-item img { width: 100%; height: 130px; object-fit: contain; background: #f4f7f9; border-radius: 6px; }
+.product-item h3 { font-size: 1rem; }
+.product-item .kategori { font-size: .82rem; color: var(--muted); }
+.product-item .harga { font-weight: 700; color: var(--accent-dark); }
+
+.spinner {
+  display: inline-block; width: 14px; height: 14px; margin-right: 8px;
+  border: 2px solid var(--line); border-top-color: var(--accent);
+  border-radius: 50%; vertical-align: -2px; animation: putar .8s linear infinite;
+}
+@keyframes putar { to { transform: rotate(360deg); } }
+
+/* Form */
+.form-layout { display: grid; gap: 24px; grid-template-columns: 1.2fr 1fr; }
+.field { display: grid; gap: 4px; margin-bottom: 14px; }
+label { font-weight: 600; font-size: .95rem; }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="search"],
+select, textarea {
+  width: 100%;
+  font: inherit;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible, .btn:focus-visible {
+  outline: 3px solid rgba(15, 110, 140, .35);
+  outline-offset: 1px;
+}
+.is-invalid { border-color: var(--danger) !important; }
+.is-valid { border-color: var(--ok) !important; }
+
+.error { color: var(--danger); font-size: .86rem; min-height: 1.1em; }
+.counter { font-size: .82rem; color: var(--muted); text-align: right; }
+.counter.is-limit { color: var(--danger); }
+
+.field-check { grid-template-columns: auto 1fr; align-items: center; column-gap: 8px; }
+.field-check .error { grid-column: 1 / -1; }
+
+.actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn {
+  font: inherit; font-weight: 600; cursor: pointer;
+  background: var(--accent); color: #fff;
+  border: 1px solid var(--accent); border-radius: 6px; padding: 9px 18px;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn-ghost { background: transparent; color: var(--accent-dark); }
+.btn-ghost:hover { background: #e2eef3; }
+
+.result { background: #f6f9fb; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; align-self: start; }
+.result h3 { font-size: 1.05rem; margin-bottom: 8px; }
+#hasil-daftar { padding-left: 20px; display: grid; gap: 10px; }
+#hasil-daftar li { font-size: .92rem; }
+#hasil-daftar .meta { color: var(--muted); font-size: .82rem; }
+
+.site-footer { text-align: center; color: var(--muted); padding: 0 16px 28px; font-size: .88rem; }
+
+@media (max-width: 760px) {
+  .form-layout { grid-template-columns: 1fr; }
+  .panel { padding: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+}
